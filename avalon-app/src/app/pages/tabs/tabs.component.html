@@ -1,0 +1,135 @@
+<mat-tab-group>
+    <!-- Pestaña 1 -->
+    <mat-tab label="Residents">
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                    <!-- Campo de selección (input select) -->
+                    <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select option</mat-label>
+                            <mat-select formControlName="address">
+                              <mat-option value="opcion1">Option 1</mat-option>
+                              <mat-option value="opcion2">Option 2</mat-option>
+                              <mat-option value="opcion3">Option 3</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="myForm.get('address').hasError('required')">Este campo es obligatorio</mat-error>
+                          </mat-form-field>
+                    </div> -->
+                    <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                        <mat-label>Owner Details</mat-label>
+                        <button mat-raised-button color="primary" (click)="addRow()">Add Row</button> -->
+                        <!-- Campo de correo electrónico (input email) -->
+                        <!-- <mat-form-field appearance="fill">
+                            <input matInput type="email" formControlName="mailingAddress" placeholder="Correo electrónico">
+                            <mat-error *ngIf="myForm.get('mailingAddress').hasError('required')">Este campo es obligatorio</mat-error>
+                            <mat-error *ngIf="myForm.get('mailingAddress').hasError('email')">Correo electrónico no válido</mat-error>
+                        </mat-form-field> -->
+                    <!-- </div> -->
+                    <table mat-table [dataSource]="dataSource">
+                      <ng-container matColumnDef="Name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Address">
+                        <th mat-header-cell *matHeaderCellDef> Address </th>
+                        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Section">
+                        <th mat-header-cell *matHeaderCellDef> Section </th>
+                        <td mat-cell *matCellDef="let element"> {{element.section}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Email">
+                        <th mat-header-cell *matHeaderCellDef> Email </th>
+                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Primary Phone">
+                        <th mat-header-cell *matHeaderCellDef> Primary Phone </th>
+                        <td mat-cell *matCellDef="let element"> {{element.primaryphone}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Resident Type">
+                        <th mat-header-cell *matHeaderCellDef> Resident Type </th>
+                        <td mat-cell *matCellDef="let element"> {{element.residenttype}} </td>
+                      </ng-container>
+                      <ng-container matColumnDef="Lease End Date">
+                        <th mat-header-cell *matHeaderCellDef> Lease End Date </th>
+                        <td mat-cell *matCellDef="let element"> {{element.leaseenddate}} </td>
+                      </ng-container>
+                        <!-- Columna 10: Botones Editar y Eliminar -->
+                        <ng-container matColumnDef="actions">
+                          <th mat-header-cell *matHeaderCellDef>Actions</th>
+                          <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary">
+                              <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </td>
+                        </ng-container>
+                    
+                        <!-- Define las columnas en la tabla -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                        <button mat-raised-button color="primary" type="submit">Enviar</button>
+                    </div>
+                    
+                  
+                    <!-- Botón de enviar -->
+                    
+                  </form>
+            </mat-card-content>
+        </mat-card>              
+    </mat-tab>
+  
+    <!-- Pestaña 2 -->
+    <mat-tab label="Vehicles">
+      <mat-card>
+        <mat-card-content>
+                <table mat-table [dataSource]="dataSourceV">
+                  <ng-container matColumnDef="Address">
+                    <th mat-header-cell *matHeaderCellDef> Address </th>
+                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Resident">
+                    <th mat-header-cell *matHeaderCellDef> Resident </th>
+                    <td mat-cell *matCellDef="let element"> {{element.residents}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="TollTag">
+                    <th mat-header-cell *matHeaderCellDef> TollTag </th>
+                    <td mat-cell *matCellDef="let element"> {{element.tolltag}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Vehicle Details">
+                    <th mat-header-cell *matHeaderCellDef> Vehicle Details </th>
+                    <td mat-cell *matCellDef="let element"> {{element.vehicle_details}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="Update Date">
+                    <th mat-header-cell *matHeaderCellDef> Update Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.update_date}} </td>
+                  </ng-container>
+                    <!-- Columna 10: Botones Editar y Eliminar -->
+                    <ng-container matColumnDef="actions">
+                      <th mat-header-cell *matHeaderCellDef>Actions</th>
+                      <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button color="primary">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </td>
+                    </ng-container>
+                
+                    <!-- Define las columnas en la tabla -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsV"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsV;"></tr>
+                </table>
+        </mat-card-content>
+    </mat-card>
+            
+    </mat-tab>
+  
+    <!-- Agrega las otras pestañas aquí -->
+  </mat-tab-group>  

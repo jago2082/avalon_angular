@@ -1,0 +1,96 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+            <!-- Campo de selección (input select) -->
+            <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>Select option</mat-label>
+                    <mat-select formControlName="address">
+                      <mat-option value="opcion1">Option 1</mat-option>
+                      <mat-option value="opcion2">Option 2</mat-option>
+                      <mat-option value="opcion3">Option 3</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="myForm.get('address').hasError('required')">Este campo es obligatorio</mat-error>
+                  </mat-form-field>
+            </div> -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>Select option</mat-label>
+                    <mat-select formControlName="ResidentType">
+                      <mat-option *ngFor="let resident of residents" [value]="resident.residence_id">
+                        {{ resident.address}}
+                      </mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="myForm.get('ResidentType').hasError('required')">Este campo es obligatorio</mat-error> -->
+                  </mat-form-field>
+            </div>
+            <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" formControlName="name" placeholder="Name">
+                    <mat-error *ngIf="myForm.get('name').hasError('required')">Este campo es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" formControlName="middle" placeholder="Middle">
+                    <mat-error *ngIf="myForm.get('middle').hasError('required')">Este campo es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" formControlName="last" placeholder="Last">
+                    <mat-error *ngIf="myForm.get('last').hasError('required')">Este campo es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="email" formControlName="primaryEmail" placeholder="Emai">l
+                    <mat-error *ngIf="myForm.get('primaryEmail').hasError('required')">Este campo es obligatorio</mat-error>
+                    <mat-error *ngIf="myForm.get('primaryEmail').hasError('email')">Correo electrónico no válido</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="tel" formControlName="PrimaryPhone" placeholder="Primary Phone">
+                    <mat-error *ngIf="myForm.get('PrimaryPhone').hasError('required')">Este campo es obligatorio</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="tel" formControlName="AlternatePhone" placeholder="Alternate Phone">l
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>No directory code assigned</mat-label>
+                    <mat-select formControlName="Directory Code">
+                      <mat-option value="opcion1">Option 1</mat-option>
+                      <mat-option value="opcion2">Option 2</mat-option>
+                      <mat-option value="opcion3">Option 3</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div> -->
+            <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>Hidden Indicator</mat-label>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button value="1">No</mat-radio-button>
+                        <mat-radio-button value="2">Yes</mat-radio-button>
+                      </mat-radio-group>
+                  </mat-form-field>
+            </div> -->
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <input matInput type="text" formControlName="DirectoryName" placeholder="Directory Name">l
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+                <button mat-raised-button color="primary" type="submit">Enviar</button>
+            </div>
+            
+          
+            <!-- Botón de enviar -->
+            
+          </form>
+    </mat-card-content>
+</mat-card>

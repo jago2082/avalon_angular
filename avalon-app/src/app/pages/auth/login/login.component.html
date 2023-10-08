@@ -1,0 +1,83 @@
+<!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
+<div class="row rounded">
+    <form class="form" autocomplete="off" [formGroup]="loginForm" novalidate="novalidate" id="kt_login_signin_form" (ngSubmit)="submit()">
+        <ngx-spinner bdColor="rgba(51,51,51,0.3)" size="large" [fullScreen]="true" type="ball-beat">
+            <div class="bg-dark text-white">
+                Please, await 
+            </div>
+        </ngx-spinner>
+        <div class="col-md-12 py-1">
+            <img src="../../../../assets/logo.png" alt="logo"  class="rounded mx-auto d-block">
+        </div>
+        <!-- <div class="col-md-12 py-1 form-group">
+            <p class="col-md-12 font-size-h6 font-weight-bolder is-required" [ngStyle]="{'color': lista.LabelColor}">Tipo Documento</p>
+            <div>
+                <select title="tipo documento" class="form-select" name="tip_codi" #tip_codi tabindex="1" formControlName="tip_codi" (change)="Gettip_codi()">
+                <option *ngFor="let item of tipodocu; let i=index" value="{{item.TIP_CODI}}" autocomplete="off" [ngStyle]="{'color': lista.SecundaryTextColor,'border-color': lista.BorderColor}">
+                    {{item.TIP_NOMB}}</option>                    
+            </select>
+            </div>
+        </div> -->
+        <div class="col-md-12 py-1 form-group">
+            <p class="col-md-12 font-size-h6 font-weight-bolder is-required">email</p>
+            <input title="email" type="text" class="form-control" type="text" name="email" tabindex="2" formControlName="email" autocomplete="off">
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'email required',
+            control: loginForm.controls['email']
+          }"></ng-container>
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'email',
+            message: 'email format not valid',
+            control: loginForm.controls['email']
+          }"></ng-container>
+        </div>
+        <div class="col-md-12 py-1">
+            <p class="col-md-12 font-size-h6 font-weight-bolder is-required" >Password</p>
+            <div class="input-group">
+                <input title="password" [type]="fieldTextType ? 'text' : 'password'" class="form-control" type="password" name="password" tabindex="3" autocomplete="off" formControlName="password">
+                <div class="input-group-append">
+                    <span class="input-group-text">
+                        <i
+                        class="fa"
+                        [ngClass]="{
+                            'fa-eye-slash': !fieldTextType,
+                            'fa-eye': fieldTextType
+                        }"
+                        (click)="toggleFieldTextType()"
+                        ></i>
+                    </span>
+                </div>
+            </div>
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'required',
+            message: 'Password required',
+            control: loginForm.controls['password']
+          }"></ng-container>
+            <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+            validation: 'minlength',
+            message: 'Password min  3 characters',
+            control: loginForm.controls['password']
+          }"></ng-container>
+        </div>
+        <div class="col-md-12 py-1">
+            <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid" >Log In</button>
+        </div>
+        <!-- <div class="col-md-12">
+            <div class="row pt-8" style="display:flex; justify-content:center">
+                <div class="col-md-7">
+                    <img title="logo_seven" src="./assets/media/logos/Sotware-erp-industrial-seven-erp.png" width="100%">
+                </div>
+            </div>
+        </div> -->
+    </form>
+</div>
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+    <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                {{ message }}
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
